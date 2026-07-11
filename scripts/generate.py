@@ -164,6 +164,10 @@ def page_shell(title, description, depth, body, active=None, extra_head=""):
       <span><a href="{prefix}index.html">Index of Poems</a></span>
     </div>
   </footer>
+
+  <div class="visitor-tracker" aria-hidden="true">
+    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=fSyKGPXmTnxk4MFiHPSg3HCBBlN_kawpMl_bpMwMfB4&cl=ffffff&w=a"></script>
+  </div>
 </body>
 </html>
 """

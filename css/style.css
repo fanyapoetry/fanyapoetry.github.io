@@ -499,3 +499,12 @@ nav.site-nav a.is-active {
   .poem-search { min-width: 0; width: 100%; }
   .index-section__head { flex-direction: column; align-items: stretch; }
 }
+
+/* ---------- private visitor tracker (kept off-screen, not display:none,
+   so the widget script still runs; no UI is meant to be visible here) ---------- */
+
+.visitor-tracker {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
