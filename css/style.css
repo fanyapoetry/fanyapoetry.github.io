@@ -1,0 +1,501 @@
+/* ==========================================================================
+   凡亞 — Poetry Collection
+   A quiet, editorial reading room in the spirit of The Paris Review
+   and the Poetry Foundation: warm paper, restrained color, generous space.
+   ========================================================================== */
+
+:root {
+  --paper: #faf7f1;
+  --paper-raised: #f3efe6;
+  --ink: #201d1a;
+  --ink-soft: #55504a;
+  --ink-faint: #8c857c;
+  --rule: #ddd5c7;
+  --accent: #9c3b2e;
+  --accent-soft: #b5583f;
+  --serif: 'Noto Serif', 'Noto Serif SC', 'Source Han Serif SC', Georgia, 'Songti SC', serif;
+  --display: 'Playfair Display', 'Noto Serif SC', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --max-w: 46rem;
+  --wide-w: 62rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #171512;
+    --paper-raised: #201d19;
+    --ink: #ece7dd;
+    --ink-soft: #b9b2a6;
+    --ink-faint: #837c72;
+    --rule: #3a352d;
+    --accent: #d97b5f;
+    --accent-soft: #e6957c;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+img { max-width: 100%; }
+
+/* ---------- layout shells ---------- */
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.wrap--wide {
+  max-width: var(--wide-w);
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--rule);
+  padding: 1.5rem 0;
+}
+
+.site-header__inner {
+  max-width: var(--wide-w);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.wordmark small {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 0.3rem;
+}
+
+nav.site-nav {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  gap: 1.6rem;
+}
+
+nav.site-nav a {
+  color: var(--ink-soft);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+nav.site-nav a:hover,
+nav.site-nav a.is-active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  max-width: var(--wide-w);
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 3rem;
+}
+
+.hero__title {
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+  font-weight: 700;
+}
+
+.hero__lede {
+  max-width: 38rem;
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+  line-height: 1.75;
+}
+
+.hero__meta {
+  margin-top: 2rem;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ---------- index / poem list ---------- */
+
+.index-section {
+  max-width: var(--wide-w);
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+}
+
+.index-section__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.index-section__head h2 {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.poem-search {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.35rem 0.1rem;
+  min-width: 14rem;
+  color: var(--ink);
+}
+
+.poem-search::placeholder { color: var(--ink-faint); }
+.poem-search:focus { outline: none; border-color: var(--accent); }
+
+.poem-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.poem-list li {
+  border-bottom: 1px solid var(--rule);
+}
+
+.poem-list li[hidden] { display: none; }
+
+.poem-list a {
+  display: flex;
+  align-items: baseline;
+  gap: 1.1rem;
+  padding: 1.05rem 0.15rem;
+}
+
+.poem-list a:hover .poem-list__title { color: var(--accent); }
+.poem-list a:hover .poem-list__num { color: var(--accent); }
+
+.poem-list__num {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  width: 2rem;
+  flex: none;
+  transition: color 0.15s ease;
+}
+
+.poem-list__title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  transition: color 0.15s ease;
+}
+
+.poem-list__title .subtitle {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin-left: 0.6em;
+}
+
+.poem-list__lang {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  flex: none;
+}
+
+.no-results {
+  padding: 2.5rem 0;
+  color: var(--ink-faint);
+  font-style: italic;
+  display: none;
+}
+
+.no-results.is-visible { display: block; }
+
+/* ---------- poem page ---------- */
+
+.poem-page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+}
+
+.poem-nav-top {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 2.5rem;
+}
+
+.poem-nav-top a { border-bottom: 1px solid var(--rule); }
+.poem-nav-top a:hover { color: var(--accent); border-color: var(--accent); }
+
+.poem-index-num {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.poem-title {
+  font-family: var(--display);
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0;
+}
+
+.poem-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin-top: 0.6rem;
+}
+
+.poem-epigraph {
+  margin: 2.2rem 0 0.5rem;
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--rule);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.poem-epigraph p { margin: 0 0 0.2rem; }
+
+.poem-epigraph cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+
+.poem-epigraph cite::before { content: "— "; }
+
+.poem-body {
+  margin-top: 2.8rem;
+  font-size: 1.15rem;
+  line-height: 1.95;
+}
+
+.poem-part + .poem-part {
+  margin-top: 2.6rem;
+}
+
+.poem-part__label {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--accent-soft);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.9rem;
+}
+
+.poem-line {
+  white-space: pre-wrap;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  margin: 0 0 1.35em;
+}
+
+.poem-line:last-child {
+  margin-bottom: 0;
+}
+
+.poem-divider {
+  text-align: center;
+  color: var(--rule);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  margin: 1.6rem 0;
+  letter-spacing: 0.3em;
+}
+
+.poem-note {
+  margin-top: 2.8rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  line-height: 1.6;
+}
+
+.poem-byline {
+  margin-top: 3.5rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-faint);
+}
+
+.poem-byline strong {
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poem-pager {
+  margin-top: 4rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  font-family: var(--sans);
+}
+
+.poem-pager__link {
+  max-width: 46%;
+}
+
+.poem-pager__link.is-next { text-align: right; margin-left: auto; }
+
+.poem-pager__dir {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.35rem;
+}
+
+.poem-pager__title {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+}
+
+.poem-pager__link:hover .poem-pager__title {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- about page ---------- */
+
+.about-page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+
+.about-page h1 {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  margin: 0 0 2rem;
+}
+
+.about-page p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  margin: 0 0 1.3rem;
+}
+
+.about-page p:first-of-type::first-letter {
+  font-family: var(--display);
+  font-size: 3.4rem;
+  float: left;
+  line-height: 0.8;
+  padding-right: 0.12em;
+  padding-top: 0.08em;
+  color: var(--accent);
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 2.2rem 0;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+.site-footer__inner {
+  max-width: var(--wide-w);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-footer a { border-bottom: 1px solid var(--rule); }
+.site-footer a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 640px) {
+  body { font-size: 16.5px; }
+  .hero { padding: 3rem 1.25rem 2.2rem; }
+  .site-header__inner { padding: 0 1.25rem; }
+  nav.site-nav { gap: 1.1rem; font-size: 0.76rem; }
+  .index-section { padding: 0 1.25rem 4rem; }
+  .poem-page { padding: 2.5rem 1.25rem 3.5rem; }
+  .poem-list a { gap: 0.7rem; }
+  .poem-list__lang { display: none; }
+  .poem-search { min-width: 0; width: 100%; }
+  .index-section__head { flex-direction: column; align-items: stretch; }
+}
