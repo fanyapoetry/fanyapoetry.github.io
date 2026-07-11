@@ -219,14 +219,8 @@ def build_about():
     body = f"""  <section class="about-page">
     <h1>About</h1>
     <p>
-      {AUTHOR} writes poems that move between Chinese, English, and fragments of
-      other languages — across cities, memory, myth, and the ordinary. This site
-      collects that work in one place: fifty-five poems, presented as they were
-      written, without translation or explanation.
-    </p>
-    <p>
-      The poems are arranged in the order of the original manuscript. Use the
-      index to browse by title, or search to find a poem by name.
+      {AUTHOR} writes poems intermittently. He is based on the East Coast and
+      remains caught in a prolonged adolescence.
     </p>
   </section>"""
     html = page_shell(
