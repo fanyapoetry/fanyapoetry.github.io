@@ -234,8 +234,18 @@ def build_about():
         f.write(html)
 
 
+def clean_stale_poem_pages(valid_slugs):
+    if not os.path.isdir(POEMS_DIR):
+        return
+    for fname in os.listdir(POEMS_DIR):
+        if fname.endswith(".html") and fname[:-5] not in valid_slugs:
+            os.remove(os.path.join(POEMS_DIR, fname))
+            print(f"Removed stale page: poems/{fname}")
+
+
 def build_poem_pages():
     os.makedirs(POEMS_DIR, exist_ok=True)
+    clean_stale_poem_pages({p["slug"] for p in POEMS})
     n = len(POEMS)
     for i, poem in enumerate(POEMS):
         prev_poem = POEMS[(i - 1) % n]

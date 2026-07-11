@@ -796,17 +796,7 @@ POEMS = [
                 "我会抱紧抱紧你的我",
                 "寓言在孔雀的孔中",
             ]),
-        ],
-        note=None,
-    ),
-
-    dict(
-        slug="swamp-in-water",
-        title="沼泽在水里",
-        subtitle=None,
-        epigraph=None,
-        parts=[
-            dict(label=None, lines=[
+            dict(label="沼泽在水里", lines=[
                 "涨红的性器宛若田地里亟待收割的庄稼",
                 "飞行中的飞机舱门打开",
                 "走出一个男人",
@@ -990,17 +980,7 @@ POEMS = [
                 "在墓石垒的",
                 "缝隙  每一篮",
             ]),
-        ],
-        note=None,
-    ),
-
-    dict(
-        slug="lair-of-the-snails",
-        title="螺蛳的潜伏之地",
-        subtitle=None,
-        epigraph=None,
-        parts=[
-            dict(label=None, lines=[
+            dict(label="螺蛳的潜伏之地", lines=[
                 "蚊虫 涉过水面",
                 "你漂浮",
                 "在被阳光遗漏的",
@@ -1062,17 +1042,7 @@ POEMS = [
                 "我们还有一局摊开的占卜",
                 "我们还要继续闭紧眼睛",
             ]),
-        ],
-        note=None,
-    ),
-
-    dict(
-        slug="the-game-is-not-over",
-        title="游戏还未结束",
-        subtitle=None,
-        epigraph=None,
-        parts=[
-            dict(label=None, lines=[
+            dict(label="游戏还未结束", lines=[
                 "亲爱的西尔维娅，天黑了",
                 "当所有的声音",
                 "走后，我只有你",
@@ -1224,17 +1194,7 @@ POEMS = [
                 "绵软的手心，肉体的大海，",
                 "容下每一行悸动",
             ]),
-        ],
-        note=None,
-    ),
-
-    dict(
-        slug="a-poets-death-is-never-noble",
-        title="“一个诗人的死从来都不高级”",
-        subtitle=None,
-        epigraph=None,
-        parts=[
-            dict(label=None, lines=[
+            dict(label="“一个诗人的死从来都不高级”", lines=[
                 "死亡被眈眈许久",
                 "只躲进露水草丛",
                 "",
