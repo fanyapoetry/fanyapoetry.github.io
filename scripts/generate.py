@@ -188,11 +188,7 @@ def build_index():
 
     body = f"""  <section class="hero">
     <h1 class="hero__title">{AUTHOR}</h1>
-    <p class="hero__lede">
-      A collection of poems moving between Chinese, English, and fragments of other
-      tongues — through cities, memory, myth, and the ordinary. Fifty-five poems,
-      gathered here in one place.
-    </p>
+    <p class="hero__lede">Poetic License: Selected Poems 2016&ndash;2026</p>
     <p class="hero__meta">{len(POEMS)} Poems &middot; An Exhibition</p>
   </section>
 
