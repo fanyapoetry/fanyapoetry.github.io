@@ -27,6 +27,7 @@ POEMS_DIR = os.path.join(ROOT, "poems")
 AUTHOR = "凡亞"
 SITE_TITLE = "凡亞 · 诗集"
 SITE_TAGLINE = "Collected Poems"
+SITE_URL = "https://fanyapoetry.github.io"
 
 FONT_LINK = (
     '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
@@ -120,9 +121,10 @@ def render_parts(parts):
     return "\n".join(blocks)
 
 
-def page_shell(title, description, depth, body, active=None, extra_head=""):
+def page_shell(title, description, depth, body, active=None, extra_head="", canonical_path=""):
     """depth: 0 for root-level pages, 1 for pages inside poems/."""
     prefix = "../" if depth else ""
+    canonical = f'  <link rel="canonical" href="{SITE_URL}/{canonical_path}">\n'
     nav_items = [
         ("Home", "index.html", "home"),
         ("About", "about.html", "about"),
@@ -143,7 +145,7 @@ def page_shell(title, description, depth, body, active=None, extra_head=""):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}">
-  {FONT_LINK}
+{canonical}  {FONT_LINK}
   <link rel="stylesheet" href="{prefix}css/style.css">
 {extra_head}</head>
 <body>
@@ -213,6 +215,7 @@ def build_index():
         depth=0,
         body=body,
         active="home",
+        canonical_path="",
         extra_head='  <script defer src="js/main.js"></script>\n',
     )
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
@@ -233,6 +236,7 @@ def build_about():
         depth=0,
         body=body,
         active="about",
+        canonical_path="about.html",
     )
     with open(os.path.join(ROOT, "about.html"), "w", encoding="utf-8") as f:
         f.write(html)
@@ -294,17 +298,45 @@ def build_poem_pages():
             description=f"“{poem['title']}” — a poem by {AUTHOR}.",
             depth=1,
             body=body,
+            canonical_path=f"poems/{poem['slug']}.html",
         )
         out_path = os.path.join(POEMS_DIR, f"{poem['slug']}.html")
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(html)
 
 
+def build_sitemap():
+    urls = [""] + ["about.html"] + [f"poems/{p['slug']}.html" for p in POEMS]
+    entries = "\n".join(
+        f"  <url><loc>{SITE_URL}/{u}</loc></url>" for u in urls
+    )
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{entries}\n"
+        "</urlset>\n"
+    )
+    with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write(xml)
+
+
+def build_robots():
+    txt = (
+        "User-agent: *\n"
+        "Allow: /\n"
+        f"Sitemap: {SITE_URL}/sitemap.xml\n"
+    )
+    with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
+        f.write(txt)
+
+
 def main():
     build_index()
     build_about()
     build_poem_pages()
-    print(f"Generated index.html, about.html, and {len(POEMS)} poem pages in poems/.")
+    build_sitemap()
+    build_robots()
+    print(f"Generated index.html, about.html, {len(POEMS)} poem pages, sitemap.xml, and robots.txt.")
 
 
 if __name__ == "__main__":
