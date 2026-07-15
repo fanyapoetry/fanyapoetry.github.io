@@ -145,6 +145,7 @@ def page_shell(title, description, depth, body, active=None, extra_head="", cano
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}">
+  <meta name="google-site-verification" content="feEia0D1qfWnU4zMQUVm-AfT8hbp_yJh02XspIV_VOE" />
 {canonical}  {FONT_LINK}
   <link rel="stylesheet" href="{prefix}css/style.css">
 {extra_head}</head>
