@@ -1530,4 +1530,30 @@ POEMS = [
         note=None,
     ),
 
+    dict(
+        slug="walnut-ave",
+        title="walnut ave.",
+        subtitle=None,
+        epigraph=None,
+        parts=[
+            dict(label=None, lines=[
+                "you'll never get anything",
+                "as everything comes from you",
+                "",
+                "then turns to gold; outside the car window,",
+                "mountains are breathing under invisible sun.",
+                "",
+                "they are sugarcoated",
+                "they are the gold of a hidden dragon",
+                "they are the anecdotes of the dragon long before us",
+                "they are the lust for more fire in our desert",
+                "they are the buried dreams of our desert",
+                "",
+                "they are everything in my veins",
+                "as i stay here at the crossroad, walnut ave.",
+            ]),
+        ],
+        note=None,
+    ),
+
 ]
